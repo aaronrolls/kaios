@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+    <script src="jquery-3.4.1.min.js"></script>
+    <title>xkcd Comics</title>
+
+       <link rel="stylesheet" href="style.css">
+    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
+         so we use a script file. -->
+    
+
+  </head>
+
+  <body>
+    <!-- This code is in the public domain. Enjoy! -->
+          <div id="title-bar" class="title-bar"><h1>xkcd Comics</h1></div>
+          <div id="comic-holder" class="comic-holder">
+          </div>
+          <div class="softkey-bar">
+              <div id="left-softkey-item" class="softkey-item"><h4>Goto</h4></div>
+              <div id="middle-softkey-item" class="softkey-item"><h5>Zoom</h5></div>
+              <div id="right-softkey-item" class="softkey-item"><h4>Alt</h4></div>
+          </div>
+          <div id ="goto-box" class="goto-box">
+            <div id="goto-box-header" class="goto-box-header"><h1>Choose Comic</h1></div>
+              <form class="form-box">
+                  <input type="number" id="comic-number-input" class="goto-input" tabindex="0" placeholder="664" onkeypress="return (event.keyCode!=13);">
+              </form>
+
+          </div>
+          <script src="app.js" defer></script>
+          
+  </body>
+
+</html>
