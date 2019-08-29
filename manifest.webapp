@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "name": "xkcd Viewer",
+  "type": "web",
+  "description": "A simple comic viewer for xkcd",
+  "launch_path": "/index.html",
+  "icons": {
+    "56": "/icons/icon56x56.png",
+    "112": "/icons/icon112x112.png"
+  },
+  "developer": {
+    "name": "Aaron Rolls",
+    "url": "http://example.com"
+  },
+  "locales": {
+    "en-US": {
+      "name": "xkcd Viewer",
+      "subtitle": "A simple comic viewer for xkcd",
+      "description": "A simple comic viewer for xkcd"
+    }
+  },
+  "default_locale": "en-US"
+}

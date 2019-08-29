@@ -1,0 +1,112 @@
+:root{
+    --title-bar-height: 2.8rem;
+    --title-bar-colour: #96A8C8;
+    --softkey-bar-height: 3rem;
+    --softkey-bar-colour: #CCCCCC;
+
+}
+html{
+    font-size: 10px;
+    fullscreen: true;
+}
+html, body, h1, h4, h5{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-size: 1.7rem;
+    font-weight: 300;
+}
+h4{
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+h5{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.main-grid-container{
+    display: grid;
+    grid-template-columns: 240px;
+    grid-template-rows: 2.8rem 26.2rem 3rem;
+
+}
+
+.title-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--title-bar-height);
+    box-sizing: border-box;
+    padding-right: 1rem;
+    padding-top: 0.30rem;
+    padding-left: 1rem;
+    background-color: var(--title-bar-colour);
+    text-align: center;
+}
+.list-container{
+    margin-top: var(--title-bar-height);
+    margin-bottom: var(--softkey-bar-height);
+}
+.list-item{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-top: 1px;
+    border-bottom-color: black;
+    background-color: white;
+    font-size: 12;
+}
+.list-item:focus{
+    background-color:white;
+}
+.goto-box{
+    width: 100%;
+    position: fixed;
+    visibility: hidden;
+    background-color: white;
+    bottom: var(--softkey-bar-height);
+}
+.goto-box-header{
+    text-align: center;
+    width: 100%;
+    height: var(--title-bar-height);
+    background-color: var(--title-bar-colour);
+    grid-column-start: 1;
+    grid-column-end: 3;
+    box-sizing: border-box;
+    padding: 0.30rem 0 0 0;
+}
+.goto-input{
+    font-size: 14;
+    width: 87%;
+    background-color: white;
+    border-color: #CCCCCC;
+    border-width: 2px;
+    border-style: solid;
+    padding: 8px;
+}
+.goto-input:focus{
+    background-color: #96A8C8;
+}
+.form-box{
+    
+    width: 100%;
+    margin: 0.5rem;
+}
+.softkey-bar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7.2rem 7.6rem 7.2rem;
+    padding: 0.6rem 1rem 0 1rem;
+    box-sizing: border-box;
+    height: var(--softkey-bar-height);
+    background-color: var(--softkey-bar-colour);
+}
+.softkey-item{
+    text-align: center;
+}
