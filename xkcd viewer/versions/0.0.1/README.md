@@ -1,4 +1,4 @@
-#Changelog of 0.0.1
+# Changelog of 0.0.1
 
 This is the first edition of the software
 
