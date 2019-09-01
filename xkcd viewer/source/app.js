@@ -94,40 +94,10 @@ var navigation = {
                 window.scroll(windowlocation.x, windowlocation.y);
                 console.log("Zoomed");
               }else if(goto_box){
-                document.getElementById("comic-number-input").value = null;
-                console.log("Cleared");
-              }else{
-                console.log("Unzoomed");
-                document.getElementById("comic").style.width = "240px";
-                document.getElementById("comic").style.marginTop = "2.9rem";
-                document.getElementById("title-bar").style.visibility = "visible";
-                zoomed = false;
-                windowlocation.x = 0;
-                windowlocation.y = 0;
-                window.scroll(windowlocation.x, windowlocation.y);
-              }
-              break;
-          case "SoftLeft":
-              if(goto_box){
-                console.log("SoftLeft");
-                phoneScreen.LocationBox("hide");
-                document.getElementById("comic-number-input").value = null;
-                goto_box = false;
-              }else{
-                console.log("SoftLeft");
-                phoneScreen.LocationBox("show");
-                goto_box = true;
-                const items = document.querySelectorAll(".goto-input");
-                var targetElement = items[0];
-                targetElement.focus();
-              }
-              break;
-          case "SoftRight":
-              if(goto_box){
-                console.log("SoftRight");
                 var new_comic = document.getElementById("comic-number-input").value;
+                new_comic = Number(new_comic);
                 if(new_comic == null || isNaN(new_comic)){
-                  alert("The number you entered is invalid " + new_comic);
+                  alert("The number you entered is invalid " + new_comic + ". Please select the number input option by pressing the # key. Unfortunately, number input tags are bugged in Kai OS right now.");
                   document.getElementById("comic-number-input").value = null;
                 }else if(new_comic < 1 || new_comic > max_comic_number){
                   alert("The number you entered(" + new_comic + ") doesn't match any xkcd comic");
@@ -140,7 +110,50 @@ var navigation = {
                   mainDisplay.updateComic();
                   phoneScreen.LocationBox("hide");
                   goto_box = false;
+                  document.getElementById("comic-number-input").value = null;
+                  document.getElementById("comic-number-input").blur();
                 }
+                
+
+              }else{
+                console.log("Unzoomed");
+                document.getElementById("comic").style.width = "240px";
+                document.getElementById("comic").style.marginTop = "2.9rem";
+                document.getElementById("title-bar").style.visibility = "visible";
+                zoomed = false;
+                windowlocation.x = 0;
+                windowlocation.y = 0;
+                window.scroll(windowlocation.x, windowlocation.y);
+              }
+              break;
+
+          case "SoftLeft":
+              if(goto_box){
+                console.log("SoftLeft");
+                phoneScreen.LocationBox("hide");
+                document.getElementById("comic-number-input").value = null;
+                goto_box = false;
+                document.getElementById("comic-number-input").blur();
+              }else{
+                console.log("SoftLeft");
+                phoneScreen.LocationBox("show");
+                goto_box = true;
+                document.getElementById("comic-number-input").placeholder = comic_number;
+                document.getElementById("comic-number-input").focus();
+                document.getElementById("comic-number-input").focus();
+              }
+              break;
+          case "SoftRight":
+              if(goto_box){
+                console.log("SoftRight");
+                var random_comic = Math.floor((Math.random() * max_comic_number) + 1);
+                link = "http://dynamic.xkcd.com/api-0/jsonp/comic/" + random_comic + "?callback=?";
+                mainDisplay.loadData();
+                mainDisplay.updateComic();
+                phoneScreen.LocationBox("hide");
+                goto_box = false;
+                document.getElementById("comic-number-input").value = null;
+                document.getElementById("comic-number-input").blur();
               }else{
                 alert(alt);
               }
@@ -172,8 +185,8 @@ var phoneScreen = {
   LocationBox: function(action){
       if (action == "show"){
           document.getElementById("goto-box").style.visibility = "visible";
-              document.getElementById("middle-softkey-item").innerHTML = "<h4>Clear</h4>";
-              document.getElementById("right-softkey-item").innerHTML = "<h5>Go</h5>";
+              document.getElementById("middle-softkey-item").innerHTML = "<h5>Go</h5>";
+              document.getElementById("right-softkey-item").innerHTML = "<h4>Random</h4>";
               document.getElementById("left-softkey-item").innerHTML = "<h4>Cancel</h4>";
               return true;
       }else if(action == "hide"){
@@ -204,7 +217,13 @@ var mainDisplay = {
   updateComic: function(edition){
 
     document.getElementById("comic-holder").innerHTML = "<img id='comic' src='" + img_link + "' style='margin-top: 2.9rem;margin-bottom: 3rem; height: auto; width:240px'>"; 
-    document.getElementById("title-bar").innerHTML = "<h1>" + title + "</h1>"; 
+    var title_length = title.length;
+    console.log(title + " " + title_length);
+    if(title_length > 24){
+      document.getElementById("title-bar").innerHTML = "<marquee scrolldelay='60'><h1>" + title + "</h1></marquee>"; 
+    }else{
+      document.getElementById("title-bar").innerHTML = "<h1>" + title + "</h1>"; 
+    }
   }
 }
 function init() {
