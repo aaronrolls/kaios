@@ -45,7 +45,10 @@ The shortcuts are contained in a JSON file (custom-shortcuts.json) and should be
 located at the root directory of the HELPFUL launchers application.zip file.
 
 The shortcut file looks like this:
-` {
+
+```
+
+{
     "ArrowUp":{
         "long": "torch",
         "short": "calendar.gaiamobile.org"
@@ -70,7 +73,8 @@ The shortcut file looks like this:
         "long": "settings.gaiamobile.org"
         }
    
-} `
+}
+```
 
 
 Each button can ether have a "long" or a "short" option. If you remove ether 
@@ -78,6 +82,7 @@ option or even the entire button, the button will revert to its default action
 as defined by Kai OS.
 
 "long" = long press
+
 "short" = normal press
 
 If you want to launch an app, ether "long" or "short" should contain the app 
@@ -112,10 +117,16 @@ responsible for any harm it may (but probably won't do) to your device
 3. Plug your phone into your computer and insure that debugging is turned on
 4. Navigate to the directory that has the application.zip you downloaded
 5. Open your terminal or command prompt
-6. Backup your current launcher be running this 
-`adb pull /system/b2g/webapps/launcher.gaiamobile.org/`
-7. Once that has finish, install HELPFUL Launcher with this command
-`adb push application.zip /system/b2g/webapps/launcher.gaiamobile.org/`
-8. Reboot your phone
-`adb reboot`
+6. Backup your current launcher be running this  
+```
+adb pull /system/b2g/webapps/launcher.gaiamobile.org/ 
+```
+7. Once that has finish, install HELPFUL Launcher with this command  
+```
+adb push application.zip /system/b2g/webapps/launcher.gaiamobile.org/
+```
+8. Reboot your phone  
+```
+adb reboot
+```
 9. Leave a review or report bugs if you find them
